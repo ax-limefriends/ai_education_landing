@@ -79,15 +79,14 @@
   .tab-nav { display: flex; max-width: 1100px; margin: 0 auto; }
   .tab-btn {
     flex: 1; padding: 0 1rem; height: 56px;
-    font-family: 'Noto Sans KR', sans-serif; font-size: 1rem; font-weight: 600;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 0.97rem; font-weight: 700;
     color: #9094A8; background: transparent; border: none;
     border-bottom: 3px solid transparent; cursor: pointer; text-decoration: none;
-    transition: all 0.2s; display: flex; align-items: center;
-    justify-content: center; gap: 0.5rem; white-space: nowrap;
+    transition: all 0.18s; display: flex; align-items: center;
+    justify-content: center; white-space: nowrap; letter-spacing: -0.01em;
   }
-  .tab-btn .tab-icon { font-size: 1.1rem; }
-  .tab-btn:hover { color: #16A974; background: #EAFBF2; }
-  .tab-btn.active { color: #16A974; border-bottom-color: #16A974; }
+  .tab-btn:hover { color: #0E7A52; background: #D6F5E8; border-bottom-color: rgba(14,122,82,0.25); }
+  .tab-btn.active { color: #0E7A52; border-bottom-color: #16A974; font-weight: 800; }
 
   /* ── TAB PANELS ── */
   .tab-panel { display: none; }
@@ -502,19 +501,15 @@
 <div class="tab-nav-wrapper">
   <div class="tab-nav">
     <a class="tab-btn" href="cert.html">
-      <span class="tab-icon">🏅</span>
       AI교육 공인인증
     </a>
     <a class="tab-btn" href="index.html">
-      <span class="tab-icon">🎯</span>
       AI 교육 소개
     </a>
     <a class="tab-btn active" href="curriculum.html">
-      <span class="tab-icon">📚</span>
       AI 교육 커리큘럼
     </a>
     <a class="tab-btn" href="cases.html">
-      <span class="tab-icon">📸</span>
       AI 교육 사례
     </a>
   </div>
