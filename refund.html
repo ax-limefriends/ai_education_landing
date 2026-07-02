@@ -223,15 +223,18 @@
 
   /* ── FOOTER CONTACT BAR ── */
   .footer-contact-bar {
-    margin-top: 0.7rem;
-    text-align: center;
+    width: 100%; text-align: center;
+    margin-bottom: 0.6rem;
   }
   .footer-contact-bar a {
-    font-size: 0.88rem; font-weight: 700; color: #5FD9A8;
-    text-decoration: none; letter-spacing: 0.01em;
-    transition: color 0.2s;
+    display: inline-block;
+    font-size: 1rem; font-weight: 800; color: #5FD9A8;
+    text-decoration: none; letter-spacing: 0.02em;
+    border-bottom: 2px solid rgba(95,217,168,0.35);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
   }
-  .footer-contact-bar a:hover { color: #fff; }
+  .footer-contact-bar a:hover { color: #fff; border-color: #fff; }
 </style>
 </head>
 <body>
@@ -363,9 +366,9 @@
 
 <!-- FOOTER -->
 <footer>
+  <div class="footer-contact-bar"><a href="mailto:ax@limefriends.com">✉ Contact&nbsp;&nbsp;ax@limefriends.com</a></div>
   <p>© 2025 GptClass. AI 인재키움 사업 환급과정 지정 운영기관.</p>
   <p style="margin-top:0.4rem;"><a href="index.html">메인으로 돌아가기</a> · <a href="cert.html">AI 교육 공인인증</a></p>
-  <div class="footer-contact-bar"><a href="mailto:ax@limefriends.com">✉ Contact&nbsp;&nbsp;ax@limefriends.com</a></div>
 </footer>
 
 </body>
