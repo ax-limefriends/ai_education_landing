@@ -145,8 +145,8 @@
   .option-item:hover { border-color: var(--green); background: var(--green-light); }
   .option-item input { display: none; }
   .option-item.selected { border-color: var(--green); background: var(--green-light); color: var(--green-dark); font-weight: 700; }
-  .option-item.warn-item { border-color: #FDE68A; background: var(--amber-light); }
-  .option-item.warn-item.selected { border-color: var(--amber); background: #FEF3C7; color: #92400E; }
+  .option-item.warn-item { border-color: var(--border); background: #fff; }
+  .option-item.warn-item.selected { border-color: var(--green); background: var(--green-light); color: var(--green-dark); }
 
   .option-mark {
     width: 18px; height: 18px; flex-shrink: 0;
@@ -154,7 +154,7 @@
     display: flex; align-items: center; justify-content: center; transition: all 0.15s;
   }
   .option-item.selected .option-mark { border-color: var(--green); background: var(--green); }
-  .option-item.warn-item.selected .option-mark { border-color: var(--amber); background: var(--amber); }
+  .option-item.warn-item.selected .option-mark { border-color: var(--green); background: var(--green); }
   .option-mark-check { width: 8px; height: 8px; border-radius: 50%; background: #fff; display: none; }
   .option-item.selected .option-mark-check { display: block; }
 
