@@ -229,52 +229,96 @@
   .cert-summary-dot { width: 8px; height: 8px; border-radius: 50%; background: #5FD9A8; flex-shrink: 0; }
 
   /* ── CTA SECTION ── */
+  .cta-section {
+    background: linear-gradient(160deg, #042E1C 0%, #063D24 50%, #0A4D30 100%);
+    position: relative; overflow: hidden;
+    padding: 6rem 5%; text-align: center;
+  }
+  .cta-section::before {
+    content: 'Get in';
+    position: absolute; left: 4%; bottom: 2rem;
+    font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; font-style: italic;
+    color: rgba(255,255,255,0.05); letter-spacing: -0.03em; line-height: 1;
+    pointer-events: none; white-space: nowrap;
+  }
+  .cta-section::after {
+    content: 'Touch';
+    position: absolute; right: 4%; bottom: 2rem;
+    font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; font-style: italic;
+    color: rgba(255,255,255,0.05); letter-spacing: -0.03em; line-height: 1;
+    pointer-events: none; white-space: nowrap;
+  }
+  .cta-inner { max-width: 620px; margin: 0 auto; position: relative; z-index: 1; }
+  .cta-section .section-eyebrow { color: #5FD9A8; background: rgba(95,217,168,0.12); border-color: rgba(95,217,168,0.25); }
+  .cta-section h2 {
+    font-size: clamp(1.7rem, 3.5vw, 2.6rem); font-weight: 900;
+    letter-spacing: -0.02em; color: #FFFFFF; margin-bottom: 1rem; line-height: 1.25;
+  }
+  .cta-section h2 span { color: #5FD9A8; }
+  .cta-section p { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.8; margin-bottom: 2.5rem; }
+  .btn-apply {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: #FFFFFF; color: #0E7A52;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 1.05rem; font-weight: 700;
+    padding: 1rem 2.8rem; border-radius: 10px; text-decoration: none;
+    transition: all 0.2s; box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+    border: none; cursor: pointer;
+  }
+  .btn-apply:hover { background: #E2F6EC; color: #0E7A52; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.3); }
+  .btn-apply .arrow { font-size: 1.1rem; transition: transform 0.2s; }
+  .btn-apply:hover .arrow { transform: translateX(3px); }
+
   /* ── PARTNERS MARQUEE ── */
   .partners-section {
     background: #111111;
-    padding: 5rem 0 4rem;
+    padding: 3.5rem 0 3rem;
     overflow: hidden;
-    position: relative;
   }
   .partners-header {
-    display: flex; align-items: flex-start; justify-content: space-between;
-    padding: 0 5% 3rem;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 0 5% 2.5rem;
+    max-width: 1200px; margin: 0 auto;
+    flex-wrap: wrap; gap: 1rem;
   }
   .partners-title {
-    font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; font-style: italic;
-    color: #FFFFFF; letter-spacing: -0.02em; line-height: 1;
-    font-family: 'Georgia', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 900; font-style: italic;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: -0.02em; line-height: 1;
+    font-family: Georgia, serif;
   }
-  .partners-tagline {
-    font-size: 0.95rem; color: rgba(255,255,255,0.55); line-height: 1.7;
-    text-align: right; max-width: 220px;
+  .partners-sub {
+    font-size: 0.95rem; color: rgba(255,255,255,0.5);
+    line-height: 1.7; text-align: right;
   }
-  .marquee-track {
-    display: flex; gap: 0; overflow: hidden;
+  .partners-track-wrap {
+    overflow: hidden;
     mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   }
-  .marquee-strip {
-    display: flex; align-items: center; gap: 3.5rem;
-    animation: marquee-scroll 40s linear infinite;
-    flex-shrink: 0; padding: 1rem 0;
+  .partners-track {
+    display: flex; align-items: center; gap: 3rem;
+    width: max-content;
+    animation: marquee 40s linear infinite;
   }
-  .marquee-strip:nth-child(2) { animation-delay: -20s; }
-  @keyframes marquee-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+  .partners-track:hover { animation-play-state: paused; }
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
-  .marquee-track:hover .marquee-strip { animation-play-state: paused; }
-  .partner-logo {
-    height: 52px; width: auto; max-width: 160px;
-    object-fit: contain;
-    filter: grayscale(100%) brightness(0.65);
-    opacity: 0.8;
+  .p-logo {
     flex-shrink: 0;
-    transition: filter 0.3s, opacity 0.3s;
+    padding: 1rem 1.8rem;
+    display: flex; align-items: center; justify-content: center;
   }
-  .partner-logo:hover { filter: grayscale(0%) brightness(1); opacity: 1; }
-  .marquee-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.12); flex-shrink: 0; }
+  .p-logo img {
+    height: 44px; width: auto; max-width: 180px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.55);
+    transition: filter 0.25s;
+    display: block;
+  }
+  .p-logo:hover img { filter: grayscale(0%) brightness(1); }
 
   /* ── FOOTER ── */
   footer { background: #0A1F14; border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.45); }
@@ -346,7 +390,7 @@
 <section class="pain-section fade-up">
   <div class="pain-inner">
     <div class="section-eyebrow">현실적인 고민</div>
-    <h2 class="section-title">많이들 겪는 다섯 가지<br>고민</h2>
+    <h2 class="section-title">많이들 겪는 네 가지<br>고민</h2>
     <p class="section-sub">AI 교육 도입을 결정하기 전, 이런 고민 한 번씩은 해보셨을 겁니다.</p>
     <div class="pain-grid">
       <div class="pain-card">
@@ -381,14 +425,7 @@
           <p class="pain-desc">1회성 특강으로는 실무에 정착되지 않고, 며칠 지나면 예전 방식으로 되돌아갑니다.</p>
         </div>
       </div>
-      <div class="pain-card" style="grid-column: 1 / -1; max-width: 420px; margin: 0 auto; width: 100%;">
-        <div class="pain-emoji">📝</div>
-        <div class="pain-body">
-          <div class="pain-num">고민 05</div>
-          <div class="pain-title">"정부지원 사업, 서류가<br>복잡하고 번거롭다"</div>
-          <p class="pain-desc">환급과정이 있다는 건 알지만, 신청 절차와 서류 준비가 부담스러워 포기하게 됩니다.</p>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -412,7 +449,7 @@
       <div class="solution-card">
         <div class="solution-num">해결 02</div>
         <span class="solution-check">✅</span>
-        <div class="solution-title">KPC 공인 AI 훈련코치가<br>직접 설계</div>
+        <div class="solution-title">산업인력공단 공인 AI 훈련코치<br>직접 설계</div>
         <p class="solution-desc">한국생산성본부(KPC)가 인증한 AI 훈련코치가 커리큘럼 설계부터 강의, 사후 피드백까지 전 과정을 책임집니다. "누가 가르치는가"에 대한 답을 공식 인증으로 드립니다.</p>
       </div>
       <div class="solution-card">
@@ -447,14 +484,15 @@
           <div class="cert-badge-arrow">자세히 보기 →</div>
         </div>
       </a>
-      <div class="cert-badge">
+      <a class="cert-badge cert-badge-link" href="coach.html">
         <div class="cert-badge-medal">🏅</div>
         <div>
           <div class="cert-badge-label">KPC Certified</div>
-          <div class="cert-badge-name">KPC(한국생산성본부)<br>공인 AI 훈련코치</div>
+          <div class="cert-badge-name">산업인력공단 공인<br>AI 훈련코치 자세히 보기</div>
           <div class="cert-badge-sub">공인기관 인증 전문가가<br>설계·운영·사후 지원까지</div>
+          <div class="cert-badge-arrow">자세히 보기 →</div>
         </div>
-      </div>
+      </a>
     </div>
     <div class="cert-summary">
       <span class="cert-summary-dot"></span>
@@ -464,103 +502,61 @@
 </section>
 
 <!-- CTA -->
+<!-- PARTNERS MARQUEE -->
 <section class="partners-section">
   <div class="partners-header">
-    <div class="partners-title">PARTNERS</div>
-    <div class="partners-tagline">우리는 최고의 파트너와<br>함께 일하고 있습니다.</div>
-  </div>
-  <div class="marquee-track">
-    <div class="marquee-strip" id="strip1">
-      <img class="partner-logo" src="images/partners/kdata.png" alt="한국데이터산업진흥원">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/social-enterprise.png" alt="한국사회적기업진흥원">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/nipa.png" alt="정보통신산업진흥원">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/kosme.png" alt="중소벤처기업진흥단">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/mss.png" alt="중소벤처기업부">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/kiat.png" alt="한국산업기술진흥원">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/kita.png" alt="한국무역협회">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/kocca.png" alt="한국콘텐츠진흥원">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/sedc.png" alt="서울에너지드림센터">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/seoul-media.png" alt="서울마을미디어지원센터">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/seoul.png" alt="서울특별시">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/seodaemun.png" alt="서대문구">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/guro.png" alt="구로교육복지센터">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/jungnim.png" alt="구립중림장애인주간보호센터">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/gangdong.png" alt="강동">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/asan.png" alt="아산시">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/ocuk.png" alt="한국열린사이버대학교">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/chungbuk.png" alt="충북광역자활센터">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/jungnang.png" alt="중랑구">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/chungnam.png" alt="충청남도공익활동지원센터">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/aws.png" alt="AWS">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/sunrin.png" alt="선린인터넷고등학교">
-      <div class="marquee-divider"></div>
+    <div class="partners-title-wrap">
+      <span class="partners-title">PARTNERS</span>
     </div>
-    <div class="marquee-strip" id="strip2" aria-hidden="true">
-      <img class="partner-logo" src="images/partners/kdata.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/social-enterprise.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/nipa.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/kosme.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/mss.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/kiat.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/kita.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/kocca.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/sedc.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/seoul-media.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/seoul.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/seodaemun.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/guro.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/jungnim.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/gangdong.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/asan.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/ocuk.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/chungbuk.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/jungnang.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/chungnam.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/aws.png" alt="">
-      <div class="marquee-divider"></div>
-      <img class="partner-logo" src="images/partners/sunrin.png" alt="">
-      <div class="marquee-divider"></div>
+    <p class="partners-sub">우리는 최고의 파트너와<br>함께 일하고 있습니다.</p>
+  </div>
+  <div class="partners-track-wrap">
+    <div class="partners-track">
+      <div class="p-logo"><img src="images/partners/kdata.png" alt="한국데이터산업진흥원"></div>
+      <div class="p-logo"><img src="images/partners/social-ent.png" alt="한국사회적기업진흥원"></div>
+      <div class="p-logo"><img src="images/partners/nipa.png" alt="정보통신산업진흥원"></div>
+      <div class="p-logo"><img src="images/partners/kosme.png" alt="중소기업기술정보진흥단"></div>
+      <div class="p-logo"><img src="images/partners/smv.png" alt="중소벤처기업부"></div>
+      <div class="p-logo"><img src="images/partners/kiat.png" alt="한국산업기술진흥원"></div>
+      <div class="p-logo"><img src="images/partners/kita.png" alt="한국무역협회"></div>
+      <div class="p-logo"><img src="images/partners/kocca.png" alt="한국콘텐츠진흥원"></div>
+      <div class="p-logo"><img src="images/partners/seoul-energy.png" alt="서울에너지드림센터"></div>
+      <div class="p-logo"><img src="images/partners/seoul-media.png" alt="서울마을미디어지원센터"></div>
+      <div class="p-logo"><img src="images/partners/seoul-city.png" alt="서울특별시"></div>
+      <div class="p-logo"><img src="images/partners/seodaemun.png" alt="서대문구"></div>
+      <div class="p-logo"><img src="images/partners/guro-welf.png" alt="구로교육복지센터"></div>
+      <div class="p-logo"><img src="images/partners/jungrim.png" alt="구립중림장애인주간보호센터"></div>
+      <div class="p-logo"><img src="images/partners/gangdong.png" alt="강동구"></div>
+      <div class="p-logo"><img src="images/partners/asan.png" alt="아산시"></div>
+      <div class="p-logo"><img src="images/partners/ocuk.png" alt="한국열린사이버대학교"></div>
+      <div class="p-logo"><img src="images/partners/chungbuk.png" alt="충북광역자활센터"></div>
+      <div class="p-logo"><img src="images/partners/jungnang.png" alt="중랑구"></div>
+      <div class="p-logo"><img src="images/partners/chungnam.png" alt="충청남도공익활동지원센터"></div>
+      <div class="p-logo"><img src="images/partners/aws.png" alt="AWS"></div>
+      <div class="p-logo"><img src="images/partners/sunrin.png" alt="선린인터넷고등학교"></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="p-logo"><img src="images/partners/kdata.png" alt="한국데이터산업진흥원"></div>
+      <div class="p-logo"><img src="images/partners/social-ent.png" alt="한국사회적기업진흥원"></div>
+      <div class="p-logo"><img src="images/partners/nipa.png" alt="정보통신산업진흥원"></div>
+      <div class="p-logo"><img src="images/partners/kosme.png" alt="중소기업기술정보진흥단"></div>
+      <div class="p-logo"><img src="images/partners/smv.png" alt="중소벤처기업부"></div>
+      <div class="p-logo"><img src="images/partners/kiat.png" alt="한국산업기술진흥원"></div>
+      <div class="p-logo"><img src="images/partners/kita.png" alt="한국무역협회"></div>
+      <div class="p-logo"><img src="images/partners/kocca.png" alt="한국콘텐츠진흥원"></div>
+      <div class="p-logo"><img src="images/partners/seoul-energy.png" alt="서울에너지드림센터"></div>
+      <div class="p-logo"><img src="images/partners/seoul-media.png" alt="서울마을미디어지원센터"></div>
+      <div class="p-logo"><img src="images/partners/seoul-city.png" alt="서울특별시"></div>
+      <div class="p-logo"><img src="images/partners/seodaemun.png" alt="서대문구"></div>
+      <div class="p-logo"><img src="images/partners/guro-welf.png" alt="구로교육복지센터"></div>
+      <div class="p-logo"><img src="images/partners/jungrim.png" alt="구립중림장애인주간보호센터"></div>
+      <div class="p-logo"><img src="images/partners/gangdong.png" alt="강동구"></div>
+      <div class="p-logo"><img src="images/partners/asan.png" alt="아산시"></div>
+      <div class="p-logo"><img src="images/partners/ocuk.png" alt="한국열린사이버대학교"></div>
+      <div class="p-logo"><img src="images/partners/chungbuk.png" alt="충북광역자활센터"></div>
+      <div class="p-logo"><img src="images/partners/jungnang.png" alt="중랑구"></div>
+      <div class="p-logo"><img src="images/partners/chungnam.png" alt="충청남도공익활동지원센터"></div>
+      <div class="p-logo"><img src="images/partners/aws.png" alt="AWS"></div>
+      <div class="p-logo"><img src="images/partners/sunrin.png" alt="선린인터넷고등학교"></div>
     </div>
   </div>
 </section>

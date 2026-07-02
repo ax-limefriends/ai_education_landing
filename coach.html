@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>산업인력공단 공인 AI 훈련코치 | GptClass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green:      #16A974;
+    --green-dark: #0E7A52;
+    --green-mid:  #5FD9A8;
+    --green-light:#E2F6EC;
+    --ink:        #1A1A2E;
+    --ink-mid:    #555770;
+    --ink-light:  #9094A8;
+    --border:     #E4E8F0;
+    --bg2:        #F7F8FA;
+  }
+
+  body { font-family: 'Noto Sans KR', sans-serif; color: var(--ink); background: #fff; }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 64px;
+    background: rgba(4,46,28,0.97); backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .logo { font-size: 1.3rem; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
+  .logo span { color: var(--green-mid); }
+  .header-back {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    color: rgba(255,255,255,0.75); font-size: 0.88rem; text-decoration: none;
+    transition: color 0.2s;
+  }
+  .header-back:hover { color: #fff; }
+  .header-back svg { width: 16px; height: 16px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(165deg, #042E1C 0%, #0A4D2C 40%, #0E7A52 80%, #16A974 100%);
+    padding: 9rem 1.5rem 5rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(95,217,168,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px; padding: 0.45rem 1.1rem;
+    font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.9);
+    letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1.6rem;
+  }
+  .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; color: #fff; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 1.2rem; }
+  .hero h1 em { font-style: normal; color: var(--green-mid); }
+  .hero-desc { font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,0.75); line-height: 1.8; max-width: 640px; margin: 0 auto; }
+
+  /* ── SECTION ── */
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 920px; margin: 0 auto; }
+  .section-label {
+    display: inline-block;
+    background: var(--green-light); color: var(--green-dark);
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 6px; padding: 0.3rem 0.8rem; margin-bottom: 1rem;
+  }
+  .section-title { font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 900; line-height: 1.25; letter-spacing: -0.03em; margin-bottom: 0.6rem; }
+  .section-lead { font-size: 1.05rem; color: var(--ink-mid); line-height: 1.8; margin-bottom: 3rem; }
+
+  /* ── WHAT IS (Page 2) ── */
+  .what-section { background: var(--bg2); }
+  .what-summary {
+    background: #fff; border: 1px solid var(--border); border-radius: 14px;
+    padding: 1.2rem 1.8rem; margin-bottom: 2rem;
+    font-size: 1.05rem; font-weight: 700; color: var(--ink); text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .points-grid {
+    display: grid; gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  }
+  @media (max-width: 600px) { .points-grid { grid-template-columns: 1fr; } }
+  .point-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 16px;
+    padding: 1.8rem; box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .point-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(22,169,116,0.12); }
+  .point-num { font-size: 0.75rem; font-weight: 800; color: var(--green); letter-spacing: 0.08em; margin-bottom: 0.7rem; }
+  .point-title { font-size: 1.1rem; font-weight: 900; color: var(--ink); line-height: 1.4; margin-bottom: 0.5rem; }
+  .point-sub { font-size: 0.85rem; color: var(--ink-mid); }
+  .point-desc { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.8; margin-top: 0.6rem; }
+
+  /* ── PROCESS (Page 4) ── */
+  .process-section { background: #fff; }
+  .process-summary {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.2rem 1.8rem; margin-bottom: 2rem; text-align: center;
+  }
+  .process-summary strong { font-size: 1rem; font-weight: 800; display: block; margin-bottom: 0.3rem; }
+  .process-summary span { font-size: 0.88rem; color: var(--ink-mid); }
+  .process-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .process-table th, .process-table td {
+    border: 1px solid var(--border); padding: 0.9rem 1rem; text-align: left; vertical-align: top;
+  }
+  .process-table th { background: var(--bg2); font-weight: 700; text-align: center; white-space: nowrap; }
+  .process-table .stage-cell {
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+    color: #fff; font-weight: 900; text-align: center; white-space: nowrap;
+    font-size: 0.95rem; vertical-align: middle;
+  }
+  .process-table .sub-cell { background: rgba(22,169,116,0.07); font-weight: 700; text-align: center; white-space: nowrap; vertical-align: middle; }
+  .process-table td p { margin-bottom: 0.4rem; line-height: 1.7; }
+  .process-table td p:last-child { margin-bottom: 0; }
+  .process-note { font-size: 0.82rem; color: var(--ink-light); }
+  .process-output {
+    margin-top: 1.5rem; background: var(--green-light); border-radius: 10px;
+    padding: 1rem 1.4rem; font-size: 0.9rem; line-height: 1.7;
+  }
+  .process-output strong { color: var(--green-dark); }
+
+  /* ── PROCEDURE (Pages 6 & 8) ── */
+  .proc-section { background: var(--bg2); }
+  .proc-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-bottom: 2rem; }
+  .proc-table th, .proc-table td {
+    border: 1px solid var(--border); padding: 1rem 1.2rem; vertical-align: top; line-height: 1.8;
+  }
+  .proc-table th { background: var(--bg2); font-weight: 700; text-align: center; white-space: nowrap; width: 120px; }
+  .proc-highlight {
+    background: rgba(250,204,21,0.15); border-left: 3px solid #FACC15;
+    border-radius: 4px; padding: 0.3rem 0.6rem; margin-bottom: 0.6rem;
+    font-weight: 700; font-size: 0.88rem; display: block;
+  }
+  .proc-highlight.red { background: rgba(239,68,68,0.08); border-color: #EF4444; color: #B91C1C; }
+  .proc-sub-table { width: 100%; border-collapse: collapse; margin-top: 0.8rem; font-size: 0.85rem; }
+  .proc-sub-table th, .proc-sub-table td { border: 1px solid var(--border); padding: 0.5rem 0.8rem; }
+  .proc-sub-table th { background: var(--bg2); font-weight: 700; text-align: center; }
+  .proc-note-inline { font-size: 0.82rem; color: var(--ink-light); display: block; margin-top: 0.3rem; }
+
+  /* ── PAY SECTION (from page 8) ── */
+  .pay-cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 2rem; }
+  .pay-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 14px;
+    padding: 1.4rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .pay-label { font-size: 0.75rem; font-weight: 800; color: var(--green); letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+  .pay-value { font-size: 1rem; font-weight: 700; color: var(--ink); line-height: 1.6; }
+  .pay-amount { font-size: 1.6rem; font-weight: 900; color: var(--green-dark); }
+  .docs-list { margin-top: 1.5rem; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; }
+  .docs-list-title { font-size: 0.88rem; font-weight: 800; color: var(--ink); margin-bottom: 0.8rem; }
+  .docs-list li { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.9; list-style: none; padding-left: 1.2rem; position: relative; }
+  .docs-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+  /* ── CTA ── */
+  .cta-section { background: linear-gradient(160deg, #042E1C 0%, #063D24 50%, #0A4D30 100%); padding: 5rem 1.5rem; text-align: center; }
+  .cta-section .section-label { background: rgba(95,217,168,0.15); color: var(--green-mid); }
+  .cta-section .section-title { color: #fff; }
+  .cta-section .section-lead { color: rgba(255,255,255,0.7); }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+    color: #fff; border-radius: 14px; padding: 1.1rem 2.4rem;
+    font-size: 1.05rem; font-weight: 800; text-decoration: none;
+    transition: all 0.2s; box-shadow: 0 8px 28px rgba(22,169,116,0.35);
+  }
+  .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(22,169,116,0.45); }
+
+  /* ── FOOTER ── */
+  footer { background: #0A1F14; color: rgba(255,255,255,0.5); padding: 2rem 1.5rem; text-align: center; font-size: 0.82rem; line-height: 1.8; }
+  footer a { color: var(--green-mid); text-decoration: none; }
+
+  /* ── FADE IN ── */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="index.html">Gpt<span>Class</span></a>
+  <a class="header-back" href="cert.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
+    </svg>
+    공인인증 페이지로 돌아가기
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow"><span class="hero-dot"></span>KPC · 한국산업인력공단 공인</div>
+  <h1>산업인력공단<br><em>공인 AI 훈련코치</em></h1>
+  <p class="hero-desc">
+    중소기업의 업무공정·직무 중심 AI 훈련로드맵과 PBL 과정을 개발하는<br>
+    정부 공인 전문가 제도입니다.
+  </p>
+</section>
+
+<!-- PAGE 2: AI 훈련코치란? -->
+<section class="section what-section fade-up">
+  <div class="section-inner">
+    <span class="section-label">AI 훈련코치란?</span>
+    <h2 class="section-title">중소기업 맞춤형<br>AI 훈련 전문가</h2>
+    <div class="what-summary">중소기업의 업무공정 직무 중심의 AI 훈련로드맵과 PBL 과정을 개발합니다</div>
+    <div class="points-grid">
+      <div class="point-card">
+        <div class="point-num">POINT 01</div>
+        <div class="point-title">맞춤형 AI 훈련 로드맵 수립</div>
+        <div class="point-sub">센터별 총 200개 기업</div>
+        <p class="point-desc">분석 결과를 토대로 기업 수준에 최적화된 단계별 AI 훈련 로드맵을 수립하고 로드맵 보고서를 제출합니다.</p>
+      </div>
+      <div class="point-card">
+        <div class="point-num">POINT 02</div>
+        <div class="point-title">PBL 훈련과정 설계 &amp; 교육지원</div>
+        <div class="point-sub">센터별 총 60개 기업</div>
+        <p class="point-desc">기업의 문제 또는 프로젝트 기반의 PBL 훈련과정을 개발합니다. 기업이 개발된 PBL 훈련을 실시하는 경우 훈련코치가 강사로 활동이 가능합니다.</p>
+      </div>
+      <div class="point-card">
+        <div class="point-num">POINT 03</div>
+        <div class="point-title">공단 유관 프로그램 연계</div>
+        <div class="point-sub">센터별 총 80개 기업</div>
+        <p class="point-desc">최근 3년간 자체훈련에 참여하지 않은 중소기업을 발굴하여 훈련로드맵과 PBL 과정이 실제 훈련으로 연결될 수 있도록 공단의 타 프로그램을 연계합니다.</p>
+      </div>
+      <div class="point-card">
+        <div class="point-num">POINT 04</div>
+        <div class="point-title">우수사례 창출</div>
+        <div class="point-sub">센터별 총 50개 기업</div>
+        <p class="point-desc">AI훈련로드맵과 문제해결형(PBL) AI+ 직무 훈련과정을 실제 실시한 기업 중 우수성과를 낸 기업을 50개 창출합니다. 우수사례는 AI확산센터 성과평가와 경진대회 참여시 활용됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 4: AI 훈련코치 업무 프로세스 -->
+<section class="section process-section fade-up">
+  <div class="section-inner">
+    <span class="section-label">AI 훈련코치 업무 프로세스</span>
+    <h2 class="section-title">2차 방문 컨설팅<br>프로세스</h2>
+    <div class="process-summary">
+      <strong>2차 방문 | 대면 필수 · 2시간 이상 | 결과 보고회, 과정개발 완료</strong>
+      <span>참석자 : PM(필수), 참여기업 내부 전문가(필수), 기업 경영진</span>
+    </div>
+    <table class="process-table">
+      <thead>
+        <tr>
+          <th>순서</th>
+          <th>세부내용</th>
+          <th>내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="stage-cell">방문 전</td>
+          <td class="sub-cell">진행사항점검<br>추가요구분석</td>
+          <td>(코치) 필요시 비대면으로 회의 추가 진행(선택)</td>
+        </tr>
+        <tr>
+          <td class="stage-cell" rowspan="2">방문 중</td>
+          <td class="sub-cell" rowspan="2">결과보고회</td>
+          <td>
+            <p>(코치) 최종 개발된 훈련로드맵, PBL 과정 제시 및 피드백 확인</p>
+            <p class="proc-note-inline">※ 필요시 최종 로드맵 도출 전, 표준 모델 시연을 통해 결과의 타당성과 적용 가능성 사전 검증</p>
+          </td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="stage-cell" rowspan="4">방문 후</td>
+          <td class="sub-cell">보고서제출</td>
+          <td>
+            <p>(코치) 검토 의견 반영 후 최종 로드맵 센터 제출</p>
+            <p class="proc-note-inline">(※ 센터 검토 후 필요시 훈련코치에게 보고서 보완 요청가능)</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="sub-cell">기업승인</td>
+          <td>(참여기업) 센터의 검증이 완료된 보고서를 최종 승인처리</td>
+        </tr>
+        <tr>
+          <td class="sub-cell">서류제출</td>
+          <td>(코치) 수당지급 명세서, 개인정보수집 동의서, 보고서 제출</td>
+        </tr>
+        <tr>
+          <td class="sub-cell">비용지급</td>
+          <td>(센터) 컨설팅 보고서 최종 확정 후 10일(토요일, 공휴일 제외) 지급</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:center; font-weight:700; background:var(--bg2);">산출물</td>
+          <td>결과보고서(훈련로드맵) 완성본, 2차 수행일지(온라인), 수당지급 명세서(수기)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PAGES 6 & 8: 진행절차 세부 -->
+<section class="section proc-section fade-up">
+  <div class="section-inner">
+    <span class="section-label">진행절차 세부</span>
+    <h2 class="section-title">컨설팅 신청부터<br>비용 지급까지</h2>
+    <p class="section-lead">HRD4U를 통한 신청부터 e-나라도움 비용 지급까지 전 과정 안내입니다.</p>
+
+    <!-- 컨설팅 신청 및 팀 구성 -->
+    <table class="proc-table">
+      <tbody>
+        <tr>
+          <th rowspan="3">컨설팅 신청<br>및 팀 구성<br>(HRD4U)</th>
+          <td>
+            <span class="proc-highlight">✔ (신청 방법) 기업이 HRD4U 홈페이지에 회원가입 후 온라인 신청</span>
+            &lt;1단계&gt; 컨설팅을 희망하는 기업은 희망하는 AI확산센터로 협약 요청 [기업 서식1] 및 컨설팅 신청[기업 서식2]<br>
+            &lt;2단계&gt; 기업 신청서를 받은 센터는 컨설팅 팀을 구성하여 컨설팅 팀 참여 약정서 [서식1] 징구 후 컨설팅 실시<br>
+            <span class="proc-highlight red">※ 훈련코치를 통해 연계해 들어오는 기업의 경우 확산센터 구글폼을 통해 신청 필수</span>
+            ※ 기업에서 컨설팅 팀 미구성 시에는 센터에서 팀 구성(AI훈련코치 매칭) 지원<br>
+            ※ 당해연도 기준 기업 당 1회만 참여 가능
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="proc-highlight">✔ (컨설팅 팀 구성) AI훈련코치를 PM으로 지정하고, 컨설팅을 위한 기업의 담당직원을 내부전문가를 1인 지정</span>
+            - AI훈련코치의 경우 자격요건(선발, 활동자격 인증 – 기초과정 수료)을 갖춘 전문가를 활용하여야 함<br>
+            - 센터는 컨설팅 팀으로 참여하는 AI훈련코치에게 부정·부실 컨설팅 발생 시 수당이 환수됨을 서면으로 고지<br>
+            - 고지사항에 대한 동의서를 각 컨설팅 팀 구성원으로부터 받아야 하며, 동의를 거부한 구성원은 컨설팅에 참여할 수 없음<br>
+            <span class="proc-note-inline">※ [서식5] 개인정보 수집·이용 동의서 징구 – 외부전문가, 내부전문가(기업), [서식6] 정보제공동의서</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="proc-highlight">✔ (신청서 접수 및 승인) 센터는 지원요건을 충족하는지 검토 후 승인 처리</span>
+            <table class="proc-sub-table">
+              <thead>
+                <tr><th>지원요건</th><th>확인 방법</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>지원대상 기업 여부</td>
+                  <td>HRD기초진단지 또는 기업HRD이음컨설팅 보고서<br><span class="proc-note-inline">(우선지원대상기업 여부, 상시근로자 수 등)</span></td>
+                </tr>
+                <tr>
+                  <td>컨설팅 팀 구성요건</td>
+                  <td>컨설팅 참여신청서(약정서), 컨설팅 팀 구성 적합성 등</td>
+                </tr>
+              </tbody>
+            </table>
+            <span class="proc-note-inline">- 미충족 기업의 경우 부적격 사유를 기재하여 반려 처리</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 보고서 제출·확인 -->
+    <table class="proc-table">
+      <tbody>
+        <tr>
+          <th rowspan="3">컨설팅 보고서<br>제출·확인<br>(HRD4U)</th>
+          <td>
+            <span class="proc-highlight">✔ (보고서 제출 - AI훈련코치)</span>
+            AI훈련코치는 작성된 보고서[서식3]를 AI확산센터로 제출
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="proc-highlight">✔ (보고서 검증 - AI확산센터)</span>
+            센터는 제출받은 보고서의 작성내용(수행기준 준수 여부, 작성 형식 등) 및 적정성을 검토하여 이상이 없는 경우 승인 처리(이상이 있는 경우 반려 후 수정·보완 요청)
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="proc-highlight">✔ (최종 확정 - 참여기업)</span>
+            기업은 센터의 검증이 완료된 보고서를 최종 확인하여 승인 처리
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 비용 지급 -->
+    <span class="section-label" style="margin-top:0.5rem;">컨설팅 비용 지급 (e-나라도움)</span>
+    <div class="pay-cards">
+      <div class="pay-card">
+        <div class="pay-label">컨설팅 수당</div>
+        <div class="pay-amount">75만원</div>
+        <div class="pay-value">기업 당 정액 지급<br>(훈련로드맵 기준)</div>
+      </div>
+      <div class="pay-card">
+        <div class="pay-label">지급 시기</div>
+        <div class="pay-value">컨설팅 보고서 최종 확정 후<br><strong>10일 이내</strong><br><span style="font-size:0.82rem;color:var(--ink-light);">(토요일, 공휴일 제외)</span></div>
+      </div>
+      <div class="pay-card">
+        <div class="pay-label">지급 방법</div>
+        <div class="pay-value">센터에서 해당<br>AI훈련코치에게 직접 지급<br><span style="font-size:0.82rem;color:var(--ink-light);">(e-나라도움)</span></div>
+      </div>
+    </div>
+    <div class="docs-list">
+      <div class="docs-list-title">제출서류 (e-나라도움 지출 증빙 등재)</div>
+      <ul>
+        <li>사업참여자 수당지급 명세서 [서식4]</li>
+        <li>개인정보수집·이용동의서 [서식5]</li>
+        <li>AI훈련로드맵 컨설팅 보고서 [서식3]</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section fade-up">
+  <div class="section-inner" style="text-align:center;">
+    <span class="section-label">GptClass와 함께하세요</span>
+    <h2 class="section-title" style="color:#fff; margin-bottom:0.6rem;">AI 훈련코치가 함께하는<br>기업 맞춤 AI 교육</h2>
+    <p class="section-lead" style="margin:0 auto 2.5rem; max-width:520px;">산업인력공단 공인 AI 훈련코치가 직접 설계하고 운영하는 GptClass 교육 과정을 경험해 보세요.</p>
+    <a class="cta-btn" href="cert.html">AI 교육 공인인증 보러가기</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 GptClass. 산업인력공단 공인 AI 훈련코치 운영기관.</p>
+  <p style="margin-top:0.4rem;"><a href="index.html">메인으로 돌아가기</a> · <a href="cert.html">AI 교육 공인인증</a></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
