@@ -48,9 +48,9 @@
   /* ── HEADER ── */
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    background: rgba(255,255,255,0.97);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid #E4E8F0;
+    background: rgba(4,46,28,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     padding: 0 5%;
   }
   .header-inner {
@@ -58,13 +58,12 @@
     height: 64px;
   }
   .logo {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.15rem; font-weight: 600;
-    color: #16A974; letter-spacing: 0.04em; text-decoration: none;
+    font-size: 1.3rem; font-weight: 900;
+    color: #fff; letter-spacing: -0.5px; text-decoration: none;
   }
-  .logo span { color: #1A1A2E; }
+  .logo span { color: #5FD9A8; }
   .header-contact {
-    font-size: 0.82rem; color: #9094A8;
+    font-size: 0.82rem; color: rgba(255,255,255,0.65);
     display: flex; align-items: center; gap: 0.4rem;
   }
   .header-contact::before {
@@ -247,7 +246,7 @@
   .btn-apply:hover { background: #0E7A52; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(22,169,116,0.35); }
   .btn-apply .arrow { font-size: 1.1rem; transition: transform 0.2s; }
   .btn-apply:hover .arrow { transform: translateX(3px); }
-  .cta-note { margin-top: 1.2rem; font-size: 0.82rem; color: #9094A8; }
+  .cta-note { margin-top: 1.2rem; font-size: 0.82rem; color: rgba(255,255,255,0.65); }
 
   /* ── CURRICULUM PANEL ── */
   .curriculum-panel { margin-top: 120px; }
@@ -586,7 +585,7 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="index.html">GptClass</a>
+    <a class="logo" href="index.html">Gpt<span>Class</span></a>
     <div class="header-contact">교육 문의 | 담당자 연결 가능</div>
   </div>
 </header>
@@ -831,7 +830,7 @@
 </div>
 
 <footer>
-  <a class="logo" href="index.html" style="font-size: 1rem; text-decoration: none;">GptClass</a>
+  <a class="logo" href="index.html" style="font-size: 1rem; text-decoration: none;">Gpt<span>Class</span></a>
   <div>© 2026 GptClass. All rights reserved.</div>
   <div class="footer-links">
     <a href="#">이용약관</a>
