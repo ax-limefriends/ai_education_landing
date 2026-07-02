@@ -572,6 +572,9 @@
   .footer-links a { color: rgba(255,255,255,0.45) !important; }
   .footer-links a:hover { color: #5FD9A8 !important; }
   footer > div { color: rgba(255,255,255,0.35); }
+  footer .footer-contact-bar { border-top-color: rgba(255,255,255,0.1); }
+  footer .footer-contact-bar a { color: #5FD9A8 !important; }
+  footer .footer-contact-bar a:hover { color: #fff !important; }
 
   @media (max-width: 768px) {
     .quick-links-strip { flex-wrap: wrap; }
@@ -579,6 +582,18 @@
     .ql-item:nth-child(even) { border-right: none; }
   }
 
+
+  /* ── FOOTER CONTACT BAR ── */
+  .footer-contact-bar {
+    width: 100%; text-align: center; padding-top: 0.8rem;
+    border-top: 1px solid rgba(0,0,0,0.07); margin-top: 0.3rem;
+  }
+  .footer-contact-bar a {
+    font-size: 0.88rem; font-weight: 700; color: #16A974;
+    text-decoration: none; letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+  .footer-contact-bar a:hover { color: #0E7A52; }
 </style>
 </head>
 <body>
@@ -837,6 +852,7 @@
     <a href="#">개인정보처리방침</a>
     <a href="#">고객센터</a>
   </div>
+  <div class="footer-contact-bar"><a href="mailto:ax@limefriends.com">✉ Contact&nbsp;&nbsp;ax@limefriends.com</a></div>
 </footer>
 
 <script>
