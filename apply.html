@@ -614,7 +614,8 @@
 
   // ── 옵션 클릭 인터랙션
   document.querySelectorAll('.option-item').forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
       const input = item.querySelector('input');
       const type = item.dataset.type;
       const group = item.dataset.group;
