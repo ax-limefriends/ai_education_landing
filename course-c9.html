@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DX/AX 마스터 커리큘럼 | GptClass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,7 +43,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
     background: #FFFFFF;
     color: #1A1A2E;
     line-height: 1.6;
@@ -53,9 +53,8 @@
   /* ── HEADER ── */
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    background: rgba(4,46,28,0.97);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: #5FD9A8;
+    border-bottom: 2px solid rgba(0,92,65,0.18);
     padding: 0 5%;
   }
   .header-inner {
@@ -64,11 +63,11 @@
   }
   .logo {
     font-size: 1.3rem; font-weight: 900;
-    color: #fff; letter-spacing: -0.5px; text-decoration: none;
+    color: #005C41; letter-spacing: -0.5px; text-decoration: none;
   }
-  .logo span { color: #5FD9A8; }
+  .logo span { color: #003D2A; }
   .header-contact {
-    font-size: 0.82rem; color: rgba(255,255,255,0.65);
+    font-size: 0.82rem; color: rgba(0,80,50,0.85);
     display: flex; align-items: center; gap: 0.4rem;
   }
   .header-contact::before {
@@ -84,7 +83,7 @@
   .tab-nav { display: flex; max-width: 1100px; margin: 0 auto; }
   .tab-btn {
     flex: 1; padding: 0 1rem; height: 56px;
-    font-family: 'Noto Sans KR', sans-serif; font-size: 0.97rem; font-weight: 700;
+    font-family: 'Inter', 'Noto Sans KR', sans-serif; font-size: 0.97rem; font-weight: 700;
     color: #9094A8; background: transparent; border: none;
     border-bottom: 3px solid transparent; cursor: pointer; text-decoration: none;
     transition: all 0.18s; display: flex; align-items: center;
@@ -122,7 +121,7 @@
   .session-tabs-bar { background: rgba(255,255,255,0.97); border-bottom: 1px solid #E4E8F0; padding: 0; position: sticky; top: 162px; z-index: 85; overflow-x: auto; scrollbar-width: none; }
   .session-tabs-bar::-webkit-scrollbar { display: none; }
   .session-tabs { display: flex; max-width: 900px; margin: 0 auto; padding: 0 5%; overflow-x: visible; }
-  .stab { flex-shrink: 0; padding: 0 1rem; height: 46px; font-family: 'Noto Sans KR', sans-serif; font-size: 0.84rem; font-weight: 600; color: #9094A8; background: transparent; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
+  .stab { flex-shrink: 0; padding: 0 1rem; height: 46px; font-family: 'Inter', 'Noto Sans KR', sans-serif; font-size: 0.84rem; font-weight: 600; color: #9094A8; background: transparent; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
   .stab:hover { color: var(--sky); }
   .stab.sactive { color: var(--sky); border-bottom-color: var(--sky); }
   label.stab { color: #9094A8; border-bottom: 3px solid transparent; cursor: pointer;
@@ -167,7 +166,7 @@
   .btn-apply {
     display: inline-flex; align-items: center; gap: 0.6rem;
     background: var(--sky); color: #FFFFFF;
-    font-family: 'Noto Sans KR', sans-serif; font-size: 1.05rem; font-weight: 700;
+    font-family: 'Inter', 'Noto Sans KR', sans-serif; font-size: 1.05rem; font-weight: 700;
     padding: 1rem 2.8rem; border-radius: 10px; text-decoration: none;
     transition: all 0.2s; box-shadow: 0 6px 24px rgba(14,165,233,0.3);
     border: none; cursor: pointer;
