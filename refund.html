@@ -16,39 +16,41 @@
     --green-dark: #0E7A52;
     --green-mid:  #5FD9A8;
     --green-light:#E2F6EC;
-    --ink:        #1A1A2E;
+    --ink:        #1c1b1b;
     --ink-mid:    #555770;
     --ink-light:  #9094A8;
-    --border:     #E4E8F0;
+    --border:     #e5e2e1;
     --bg2:        #F7F8FA;
   }
 
   body {
     font-family: 'Inter', 'Noto Sans KR', sans-serif;
     color: var(--ink);
-    background: #fff;
+    background: #fcf9f8;
   }
 
   /* ── HEADER ── */
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     height: 64px;
-    background: #5FD9A8;
+    background: rgba(252,249,248,0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 2rem;
-    border-bottom: 2px solid rgba(0,92,65,0.18);
+    border-bottom: 1px solid #bccac1;
   }
   .logo {
-    font-size: 1.3rem; font-weight: 900; color: #005C41;
+    font-size: 1.3rem; font-weight: 900; color: #1c1b1b;
     text-decoration: none; letter-spacing: -0.5px;
   }
-  .logo span { color: #003D2A; }
+  .logo span { color: #006c4c; }
   .header-back {
     display: inline-flex; align-items: center; gap: 0.4rem;
-    color: rgba(0,80,50,0.85); font-size: 0.88rem; text-decoration: none;
+    color: #3d4a43; font-size: 0.88rem; text-decoration: none;
     transition: color 0.2s;
   }
-  .header-back:hover { color: #003D2A; }
+  .header-back:hover { color: #006c4c; }
   .header-back svg { width: 16px; height: 16px; }
 
   /* ── HERO ── */
@@ -119,7 +121,7 @@
   /* ── WHAT IS ── */
   .what-section { background: var(--bg2); }
   .what-box {
-    background: #fff;
+    background: #fcf9f8;
     border: 1px solid var(--border); border-radius: 20px;
     padding: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem;
     box-shadow: 0 4px 24px rgba(0,0,0,0.06);
@@ -140,7 +142,7 @@
   .what-rate-label { font-size: 0.9rem; line-height: 1.5; opacity: 0.9; }
 
   /* ── STEPS ── */
-  .steps-section { background: #fff; }
+  .steps-section { background: #fcf9f8; }
   .steps-grid {
     display: grid; gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -196,7 +198,7 @@
 
   /* ── CTA ── */
   .cta-section {
-    background: #fff;
+    background: #fcf9f8;
     text-align: center; padding: 5rem 1.5rem;
   }
   .cta-section .section-title { margin-bottom: 0.6rem; }
